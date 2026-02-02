@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Cakeland Bakers</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #F8C8DC;
+            --cream-bg: #FFF5E1;
+            --accent-gold: #D4AF37;
+            --text-brown: #3E2C2A;
+            --soft-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-brown);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--text-brown);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HEADER ===== */
+        .main-header {
+            background-color: white;
+            box-shadow: var(--soft-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        .logo span {
+            color: var(--primary-pink);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--text-brown);
+            cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-pink);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-brown);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(rgba(62, 44, 42, 0.9), rgba(62, 44, 42, 0.95)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            opacity: 0.1;
+            animation: floatBackground 20s linear infinite;
+        }
+        @keyframes floatBackground {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        .page-hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+        .hero-breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+            position: relative;
+        }
+        .hero-breadcrumb a {
+            color: var(--accent-gold);
+        }
+        .hero-breadcrumb span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== STORY SECTION ===== */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+        .story-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--hover-shadow);
+        }
+        .story-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+        .image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--accent-gold);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .story-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .story-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--soft-shadow);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== MISSION & VALUES ===== */
+        .mission-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 6rem;
+            box-shadow: var(--soft-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-pink), var(--accent-gold));
+        }
+        .mission-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .mission-header h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--text-brown);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover .value-icon {
+            background: var(--accent-gold);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .value-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            margin-bottom: 6rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--soft-shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .team-role {
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-brown);
+            transition: all 0.3s ease;
+        }
+        .team-social a:hover {
+            background: var(--accent-gold);
+            color: white;
+            transform: rotate(360deg);
+        }
+
+        /* ===== JOURNEY TIMELINE ===== */
+        .journey-section {
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        .journey-section:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-pink), var(--accent-gold));
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            direction: ltr;
+        }
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 2;
+            min-width: 100px;
+            text-align: center;
+        }
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--soft-shadow);
+        }
+        .timeline-content h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-pink), rgba(212, 175, 55, 0.9));
+            padding: 5rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            color: var(--text-brown);
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--text-brown);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--text-brown);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--text-brown);
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-brown);
+            color: var(--cream-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+        }
+        .social-links a {
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-pink);
+        }
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .journey-section:before {
+                left: 30px;
+            }
+            .timeline-year {
+                left: 30px;
+                transform: none;
+            }
+            .timeline-item:nth-child(even) {
+                direction: ltr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .nav-links, .nav-actions .cart-icon {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            .mission-section {
+                padding: 2rem;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .story-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero {
+                padding: 4rem 1.5rem;
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            .story-stats {
+                grid-template-columns: 1fr;
+            }
+            .stat-box {
+                padding: 1rem;
+            }
+            .mission-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Cake<span>Land</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="order.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Our Sweet Story</h1>
+        <p>From a home kitchen to Mirpur's favorite bakery - the journey of passion, creativity, and delicious dreams</p>
+        <div class="hero-breadcrumb">
+            <a href="index.html">Home</a> <span>/</span> <span>About Us</span>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="story-image">
+                <img src="images/her-birth.webp" alt="Mums Bakery creating a cake">
+                <div class="image-badge">Since 2020</div>
+            </div>
+            <div class="story-content">
+                <h2>Meet Mums Bakery</h2>
+                <p>It all started in a small home kitchen in Mirpur, where a passion for baking turned into a dream. Mums Bakery, armed with her grandmother's recipes and a creative vision, began crafting cakes that weren't just desserts - they were edible art.</p>
+                <p>What began as birthday cakes for friends and family quickly grew into a beloved local bakery. Each cake tells a story, each dessert carries a memory, and every creation is made with the same love and attention that started this journey.</p>
+                <p>Today, Cakeland Bakers stands as a testament to what happens when passion meets perseverance. We've baked for thousands of celebrations, from intimate birthdays to grand weddings, always keeping true to our core values: quality, creativity, and heartfelt service.</p>
+                
+                <div class="story-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Cakes Created</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years of Excellence</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Values -->
+        <section class="mission-section">
+            <div class="mission-header">
+                <h2>Our Mission & Values</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Baked with Love</h3>
+                    <p>Every ingredient is chosen with care, every design created with passion. We believe food tastes better when made with love.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>We never compromise on quality. From premium ingredients to meticulous craftsmanship, excellence is our standard.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Creative Innovation</h3>
+                    <p>We push boundaries of cake design while honoring traditional baking techniques. Your vision, our creativity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/hero-anni.webp" alt="Mums Bakery">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Maria Ahmed</h3>
+                        <span class="team-role">Founder & Head Pastry Chef</span>
+                        <p>Certified pastry chef with 8+ years of experience. Specializes in custom designs and flavor innovation.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/cake1.jpg" alt="Assistant Chef">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Ali Khan</h3>
+                        <span class="team-role">Assistant Baker</span>
+                        <p>Expert in fondant work and sculpting. Brings artistic flair to every creation with 5 years of experience.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/cake2.webp" alt="Customer Service">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sana Javed</h3>
+                        <span class="team-role">Customer Relations</span>
+                        <p>Your go-to person for orders and consultations. Ensures every customer gets personalized attention.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Timeline -->
+        <section class="journey-section">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>The Beginning</h3>
+                    <p>Started baking from home kitchen. First Instagram post gained unexpected attention. Received 50+ orders in first month.</p>
+                </div>
+                <div class="timeline-content">
+                    <h3>First Major Milestone</h3>
+                    <p>Featured in local food blog. Hired first assistant. Moved to small commercial kitchen in Mirpur.</p>
+                </div>
+                <div class="timeline-year">2020</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Expansion</h3>
+                    <p>Launched wedding cake line. Served first corporate client. Expanded team to 4 members.</p>
+                </div>
+                <div class="timeline-content">
+                    <h3>Recognition</h3>
+                    <p>Won "Best Local Bakery" award. Reached 10K Instagram followers. Featured in Islamabad Food Festival.</p>
+                </div>
+                <div class="timeline-year">2021</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Growth</h3>
+                    <p>Introduced dessert tables and cupcake towers. Served 100+ wedding cakes. Launched online ordering system.</p>
+                </div>
+                <div class="timeline-content">
+                    <h3>Present Day</h3>
+                    <p>Became Mirpur's most recommended bakery. Expanding to custom cake classes. Planning second location.</p>
+                </div>
+                <div class="timeline-year">2023</div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Create Sweet Memories?</h2>
+            <p>Whether it's a birthday, wedding, or just because - let's bake something extraordinary together. Share your vision and we'll bring it to life.</p>
+            <a href="contact.html" class="cta-button">Start Your Order <i class="fas fa-arrow-right"></i></a>
+        </section>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/923034676708?text=Hi%20Chef%20Maria!%20I%20just%20read%20your%20story%20and%20would%20love%20to%20order%20a%20cake." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="color: var(--accent-gold);">Cakeland Bakers by Mums Bakery</h3>
+            <p>Mirpur, Islamabad | Baking happiness since 2020</p>
+            <div class="social-links">
+                <a href="https://instagram.com/chef_maria842" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="copyright">&copy; 2023 Cakeland Bakers. Every cake tells a story. What will yours be?</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            const isDisplayed = navLinks.style.display === 'flex';
+            navLinks.style.display = isDisplayed ? 'none' : 'flex';
+            if (!isDisplayed) {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Animate stats counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const targets = [500, 3, 98];
+            let animated = false;
+
+            function checkScroll() {
+                const statsSection = document.querySelector('.story-section');
+                const sectionPosition = statsSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (sectionPosition < screenPosition && !animated) {
+                    animated = true;
+                    statNumbers.forEach((stat, index) => {
+                        let current = 0;
+                        const target = targets[index];
+                        const increment = target / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            if (index === 2) { // For percentage
+                                stat.textContent = Math.floor(current) + '%';
+                            } else {
+                                stat.textContent = Math.floor(current) + '+';
+                            }
+                        }, 30);
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Check on load
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateStats();
+            
+            // Cart functionality
+            const cartIcon = document.getElementById('cartIcon');
+            const cartCount = document.querySelector('.cart-count');
+            let cartItems = 0;
+
+            cartIcon.addEventListener('click', () => {
+                alert(`You have ${cartItems} item${cartItems !== 1 ? 's' : ''} in your cart. Visit our Menu page to add items!`);
+            });
+
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        
+// Admin Access Button
+function checkAdminAccess() {
+    const isAdmin = localStorage.getItem('adminLoggedIn') === 'true';
+    
+    if (isAdmin) {
+        // Create admin button
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Panel';
+        adminBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4F46E5;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        `;
+        
+        adminBtn.onmouseover = () => {
+            adminBtn.style.background = '#4338CA';
+            adminBtn.style.transform = 'translateY(-2px)';
+        };
+        
+        adminBtn.onmouseout = () => {
+            adminBtn.style.background = '#4F46E5';
+            adminBtn.style.transform = 'translateY(0)';
+        };
+        
+        document.body.appendChild(adminBtn);
+        
+        // Add admin CSS if not present
+        if (!document.querySelector('#admin-access-css')) {
+            const style = document.createElement('style');
+            style.id = 'admin-access-css';
+            style.textContent = `
+                .admin-access-modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.7);
+                    z-index: 9999;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .admin-access-form {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    width: 90%;
+                    max-width: 400px;
+                }
+                
+                .admin-access-form input {
+                    width: 100%;
+                    padding: 12px;
+                    margin: 10px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+}
+
+// Check on page load
+document.addEventListener('DOMContentLoaded', checkAdminAccess);
+
+
+
+// Load data from admin panel
+function loadWebsiteData() {
+    // Check if admin data exists
+    if (localStorage.getItem('websiteProducts')) {
+        const products = JSON.parse(localStorage.getItem('websiteProducts') || '[]');
+        const gallery = JSON.parse(localStorage.getItem('websiteGallery') || '[]');
+        const settings = JSON.parse(localStorage.getItem('websiteSettings') || '{}');
+        const homeContent = JSON.parse(localStorage.getItem('websiteHome') || '{}');
+        
+        // Update home page content
+        if (homeContent.heroTitle && document.getElementById('heroTitle')) {
+            document.getElementById('heroTitle').textContent = homeContent.heroTitle;
+        }
+        
+        if (homeContent.heroSubtitle && document.getElementById('heroSubtitle')) {
+            document.getElementById('heroSubtitle').textContent = homeContent.heroSubtitle;
+        }
+        
+        if (homeContent.heroImage && document.getElementById('heroImage')) {
+            document.getElementById('heroImage').style.backgroundImage = `url('${homeContent.heroImage}')`;
+        }
+        
+        // Update products on products page
+        if (products.length > 0 && window.location.pathname.includes('products')) {
+            updateProductsDisplay(products);
+        }
+        
+        // Update gallery on gallery page
+        if (gallery.length > 0 && window.location.pathname.includes('gallery')) {
+            updateGalleryDisplay(gallery);
+        }
+        
+        // Update settings in footer
+        if (settings.siteName && document.getElementById('siteName')) {
+            document.getElementById('siteName').textContent = settings.siteName;
+        }
+        
+        if (settings.phoneNumber && document.getElementById('footerPhone')) {
+            document.getElementById('footerPhone').textContent = settings.phoneNumber;
+            document.getElementById('footerPhone').href = `tel:${settings.phoneNumber}`;
+        }
+        
+        if (settings.whatsappNumber && document.getElementById('whatsappBtn')) {
+            document.getElementById('whatsappBtn').href = `https://wa.me/${settings.whatsappNumber}`;
+        }
+    }
+}
+
+// Auto-refresh when admin updates data
+window.addEventListener('storage', function(e) {
+    if (e.key === 'websiteProducts' || e.key === 'websiteGallery' || 
+        e.key === 'websiteSettings' || e.key === 'websiteHome') {
+        console.log('Website data updated from admin panel');
+        loadWebsiteData();
+        
+        // Show update notification
+        showUpdateNotification();
+    }
+});
+
+function showUpdateNotification() {
+    const notification = document.createElement('div');
+    notification.innerHTML = `
+        <div style="position: fixed; top: 20px; right: 20px; background: #10B981; color: white; 
+             padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+             z-index: 9999; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-sync-alt"></i>
+            <span>Website updated successfully!</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', loadWebsiteData);
+
+
+    </script>
+</body>
+</html>

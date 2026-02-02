@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Order - Cakeland Bakers</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #F8C8DC;
+            --cream-bg: #FFF5E1;
+            --accent-gold: #D4AF37;
+            --text-brown: #3E2C2A;
+            --soft-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-brown);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--text-brown);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HEADER ===== */
+        .main-header {
+            background-color: white;
+            box-shadow: var(--soft-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        .logo span {
+            color: var(--primary-pink);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--text-brown);
+            cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-pink);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-brown);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(rgba(62, 44, 42, 0.85), rgba(62, 44, 42, 0.9)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        .page-hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* ===== MAIN CONTENT LAYOUT ===== */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        /* ===== ORDER FORM ===== */
+        .order-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-pink);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-brown);
+        }
+        .required:after {
+            content: " *";
+            color: #ff4444;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .date-time-group {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+        .cake-type-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .cake-option {
+            position: relative;
+        }
+        .cake-option input {
+            position: absolute;
+            opacity: 0;
+        }
+        .cake-option label {
+            display: block;
+            padding: 1rem;
+            background: #f8f8f8;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cake-option input:checked + label {
+            background: var(--primary-pink);
+            border-color: var(--primary-pink);
+            color: var(--text-brown);
+            font-weight: 700;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-primary {
+            background: var(--primary-pink);
+            color: var(--text-brown);
+            flex: 2;
+        }
+        .btn-primary:hover {
+            background: var(--accent-gold);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-brown);
+            border: 2px solid var(--accent-gold);
+            flex: 1;
+        }
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+        }
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--text-brown);
+        }
+        .contact-details {
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .contact-item i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+            min-width: 20px;
+        }
+        .business-hours {
+            margin-top: 1rem;
+        }
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+        .hours-day {
+            font-weight: 600;
+        }
+        .hours-time {
+            color: #666;
+        }
+        .map-placeholder {
+            height: 200px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            margin-bottom: 5rem;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--soft-shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+        .faq-toggle {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-brown);
+            color: var(--cream-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+        }
+        .social-links a {
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-pink);
+        }
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .nav-links, .nav-actions .cart-icon {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            .form-row, .date-time-group {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .cake-type-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-buttons {
+                flex-direction: column;
+            }
+            .contact-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .order-section, .contact-card {
+                padding: 1.5rem;
+            }
+            .cake-type-options {
+                grid-template-columns: 1fr;
+            }
+            .btn {
+                width: 100%;
+                padding: 0.9rem;
+            }
+        }
+
+        /* ===== FORM VALIDATION STYLES ===== */
+        .error {
+            border-color: #ff4444 !important;
+        }
+        .error-message {
+            color: #ff4444;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Cake<span>Land</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="order.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Order Your Dream Cake</h1>
+        <p>Fill out the form below or contact us directly. We'll get back to you within 24 hours!</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="contact-layout">
+            <!-- Order Form -->
+            <section class="order-section">
+                <h2 class="section-title">Custom Cake Order Form</h2>
+                <form id="orderForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="required">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            <div class="error-message" id="nameError">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="03XX-XXXXXXX" required>
+                            <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                        <div class="error-message" id="emailError">Please enter a valid email</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occasion" class="required">Occasion</label>
+                        <select id="occasion" name="occasion" required>
+                            <option value="">Select an occasion</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="baby-shower">Baby Shower</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="occasionError">Please select an occasion</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Cake Type</label>
+                        <div class="cake-type-options">
+                            <div class="cake-option">
+                                <input type="radio" id="type-birthday" name="cakeType" value="birthday" required>
+                                <label for="type-birthday">Birthday</label>
+                            </div>
+                            <div class="cake-option">
+                                <input type="radio" id="type-wedding" name="cakeType" value="wedding">
+                                <label for="type-wedding">Wedding</label>
+                            </div>
+                            <div class="cake-option">
+                                <input type="radio" id="type-theme" name="cakeType" value="theme">
+                                <label for="type-theme">Theme</label>
+                            </div>
+                            <div class="cake-option">
+                                <input type="radio" id="type-cupcakes" name="cakeType" value="cupcakes">
+                                <label for="type-cupcakes">Cupcakes</label>
+                            </div>
+                            <div class="cake-option">
+                                <input type="radio" id="type-dessert" name="cakeType" value="dessert">
+                                <label for="type-dessert">Dessert Table</label>
+                            </div>
+                            <div class="cake-option">
+                                <input type="radio" id="type-other" name="cakeType" value="other">
+                                <label for="type-other">Other</label>
+                            </div>
+                        </div>
+                        <div class="error-message" id="cakeTypeError">Please select a cake type</div>
+                    </div>
+
+                    <div class="form-row date-time-group">
+                        <div class="form-group">
+                            <label for="deliveryDate" class="required">Delivery/Pickup Date</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate" required min="">
+                            <div class="error-message" id="dateError">Please select a future date</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryTime">Preferred Time</label>
+                            <select id="deliveryTime" name="deliveryTime">
+                                <option value="">Any Time</option>
+                                <option value="morning">Morning (9 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                                <option value="evening">Evening (4 PM - 7 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cakeSize" class="required">Cake Size (Approx. Servings)</label>
+                        <select id="cakeSize" name="cakeSize" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small (10-15 people)</option>
+                            <option value="medium">Medium (20-25 people)</option>
+                            <option value="large">Large (30-40 people)</option>
+                            <option value="xlarge">Extra Large (50+ people)</option>
+                        </select>
+                        <div class="error-message" id="sizeError">Please select cake size</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="required">Cake Details & Special Instructions</label>
+                        <textarea id="message" name="message" placeholder="Describe your cake design, flavors, colors, theme, or any special requirements..." required></textarea>
+                        <div class="error-message" id="messageError">Please provide cake details</div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Order Request
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </button>
+                    </div>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> Thank you! Your order request has been submitted. We'll contact you within 24 hours.
+                    </div>
+                </form>
+            </section>
+
+            <!-- Contact Information -->
+            <section class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Visit Our Bakery</h3>
+                            <p>We're located in Mirpur, Islamabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-pin"></i>
+                            <div>
+                                <strong>Address</strong>
+                                <p>Cakeland Bakers, Main Boulevard<br>Mirpur, Islamabad, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Call Us</strong>
+                                <p>0300-1234567<br>051-1234567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>orders@cakelandbakers.com<br>info@cakelandbakers.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="business-hours">
+                        <h4>Business Hours</h4>
+                        <div class="hours-item">
+                            <span class="hours-day">Monday - Friday</span>
+                            <span class="hours-time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="hours-day">Saturday</span>
+                            <span class="hours-time">10:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="hours-day">Sunday</span>
+                            <span class="hours-time">10:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span style="margin-left: 10px;">Google Maps Integration Available</span>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div>
+                            <h3>Quick Support</h3>
+                            <p>Get instant answers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Quick Order</strong>
+                                <p>Click the floating button or <a href="https://wa.me/923001234567" target="_blank" style="color: var(--accent-gold);">click here</a> to chat directly</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Response Time</strong>
+                                <p>We respond within 1-2 hours during business hours</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <div>
+                                <strong>Delivery Info</strong>
+                                <p>Free delivery within Mirpur. Other areas may have delivery charges.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Follow Us</h4>
+                        <div class="social-links" style="justify-content: flex-start; margin: 1rem 0;">
+                            <a href="https://instagram.com/chef_maria842" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How far in advance should I order?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        For simple designs: 2-3 days. For custom/wedding cakes: 1-2 weeks. For large events: 3-4 weeks minimum.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer delivery?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Free delivery within Mirpur. Delivery charges apply for other areas in Islamabad. We also offer pickup.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I customize flavors?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We offer chocolate, vanilla, red velvet, carrot, lemon, and custom flavor combinations.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Cash on delivery, bank transfer, JazzCash, EasyPaisa. 50% advance for large/wedding orders.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you make eggless cakes?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we offer eggless options. Please mention this in the special instructions when ordering.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How are cakes priced?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Price depends on size, design complexity, and ingredients. Basic cakes start from Rs. 2,500.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/923001234567?text=Hi%20Chef%20Maria!%20I%20want%20to%20order%20a%20custom%20cake." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="color: var(--accent-gold);">Cakeland Bakers by Mums Bakery</h3>
+            <p>Mirpur, Islamabad | Custom Orders: 0300-1234567 | Email: orders@cakelandbakers.com</p>
+            <div class="social-links">
+                <a href="https://instagram.com/chef_maria842" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="copyright">&copy; 2023 Cakeland Bakers. All orders subject to availability and confirmation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set minimum date to tomorrow
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        document.getElementById('deliveryDate').min = minDate;
+
+        // Form Validation & Submission
+        const orderForm = document.getElementById('orderForm');
+        const successMessage = document.getElementById('successMessage');
+
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            clearErrors();
+            
+            // Validate form
+            if (validateForm()) {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // In a real application, you would send data to server here
+                const formData = new FormData(orderForm);
+                const data = Object.fromEntries(formData);
+                console.log('Order submitted:', data);
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    orderForm.reset();
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name');
+            if (!name.value.trim()) {
+                showError(name, 'nameError', 'Please enter your name');
+                isValid = false;
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone');
+            const phoneRegex = /^03[0-9]{2}[0-9]{7}$/;
+            if (!phoneRegex.test(phone.value.replace(/-/g, ''))) {
+                showError(phone, 'phoneError', 'Please enter a valid 11-digit phone number (03XXXXXXXXX)');
+                isValid = false;
+            }
+            
+            // Validate email if provided
+            const email = document.getElementById('email');
+            if (email.value && !isValidEmail(email.value)) {
+                showError(email, 'emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate occasion
+            const occasion = document.getElementById('occasion');
+            if (!occasion.value) {
+                showError(occasion, 'occasionError', 'Please select an occasion');
+                isValid = false;
+            }
+            
+            // Validate cake type
+            const cakeType = document.querySelector('input[name="cakeType"]:checked');
+            if (!cakeType) {
+                document.getElementById('cakeTypeError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate delivery date
+            const deliveryDate = document.getElementById('deliveryDate');
+            if (!deliveryDate.value) {
+                showError(deliveryDate, 'dateError', 'Please select a delivery date');
+                isValid = false;
+            } else if (new Date(deliveryDate.value) < tomorrow) {
+                showError(deliveryDate, 'dateError', 'Please select a future date');
+                isValid = false;
+            }
+            
+            // Validate cake size
+            const cakeSize = document.getElementById('cakeSize');
+            if (!cakeSize.value) {
+                showError(cakeSize, 'sizeError', 'Please select cake size');
+                isValid = false;
+            }
+            
+            // Validate message
+            const message = document.getElementById('message');
+            if (!message.value.trim()) {
+                showError(message, 'messageError', 'Please provide cake details');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function showError(input, errorId, message) {
+            input.classList.add('error');
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function clearErrors() {
+            // Remove error styles
+            document.querySelectorAll('.error').forEach(el => {
+                el.classList.remove('error');
+            });
+            
+            // Hide error messages
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+       <!-- Is code ko order.html mein REPLACE kar dena - sirf JavaScript part modify kiya hai -->
+
+
+    // ... pehla code same hai ...
+
+    // WhatsApp button functionality - UPDATED VERSION
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    
+    // Form submit pe WhatsApp message bana ke bhejna
+    orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Reset errors
+        clearErrors();
+        
+        // Validate form
+        if (validateForm()) {
+            // Create WhatsApp message with ALL form data
+            const whatsappMessage = createWhatsAppMessage();
+            const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            successMessage.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                WhatsApp opening... Please send the pre-filled message to confirm your order.
+            `;
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                orderForm.reset();
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    // WhatsApp button pe bhi same functionality
+    whatsappBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+            const whatsappMessage = createWhatsAppMessage();
+            const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    });
+
+    // Function to create detailed WhatsApp message
+    function createWhatsAppMessage() {
+        // Get all form values
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value || 'Not provided';
+        const occasion = document.getElementById('occasion').value;
+        const cakeType = document.querySelector('input[name="cakeType"]:checked')?.value || 'Not selected';
+        const deliveryDate = document.getElementById('deliveryDate').value;
+        const deliveryTime = document.getElementById('deliveryTime').value || 'Any time';
+        const cakeSize = document.getElementById('cakeSize').value;
+        const message = document.getElementById('message').value;
+        
+        // Format date
+        const formattedDate = new Date(deliveryDate).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+        
+        // Create structured WhatsApp message
+        return `🍰 *NEW CAKE ORDER REQUEST* 🍰
+
+👤 *Customer Details:*
+• Name: ${name}
+• Phone: ${phone}
+• Email: ${email}
+
+🎂 *Order Information:*
+• Occasion: ${occasion}
+• Cake Type: ${cakeType}
+• Cake Size: ${cakeSize}
+• Delivery Date: ${formattedDate}
+• Preferred Time: ${deliveryTime}
+
+📝 *Cake Details & Instructions:*
+${message}
+
+📍 *Order Summary:*
+A new ${cakeSize.toLowerCase()} ${cakeType} cake for ${occasion} requested by ${name}. 
+Delivery on ${formattedDate} (${deliveryTime}).
+
+📱 *Contact customer at:* ${phone}`;
+    }
+
+    // ... baki ka code same hai ...
+
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            const isDisplayed = navLinks.style.display === 'flex';
+            navLinks.style.display = isDisplayed ? 'none' : 'flex';
+            if (!isDisplayed) {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Real-time phone number formatting
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 4) {
+                    value = value;
+                } else if (value.length <= 7) {
+                    value = value.slice(0, 4) + '-' + value.slice(4);
+                } else {
+                    value = value.slice(0, 4) + '-' + value.slice(4, 11);
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Cart functionality
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+        let cartItems = 0;
+
+        cartIcon.addEventListener('click', () => {
+            alert(`You have ${cartItems} item${cartItems !== 1 ? 's' : ''} in your cart. For custom orders, please use the order form.`);
+        });
+
+
+        
+// Admin Access Button
+function checkAdminAccess() {
+    const isAdmin = localStorage.getItem('adminLoggedIn') === 'true';
+    
+    if (isAdmin) {
+        // Create admin button
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Panel';
+        adminBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4F46E5;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        `;
+        
+        adminBtn.onmouseover = () => {
+            adminBtn.style.background = '#4338CA';
+            adminBtn.style.transform = 'translateY(-2px)';
+        };
+        
+        adminBtn.onmouseout = () => {
+            adminBtn.style.background = '#4F46E5';
+            adminBtn.style.transform = 'translateY(0)';
+        };
+        
+        document.body.appendChild(adminBtn);
+        
+        // Add admin CSS if not present
+        if (!document.querySelector('#admin-access-css')) {
+            const style = document.createElement('style');
+            style.id = 'admin-access-css';
+            style.textContent = `
+                .admin-access-modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.7);
+                    z-index: 9999;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .admin-access-form {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    width: 90%;
+                    max-width: 400px;
+                }
+                
+                .admin-access-form input {
+                    width: 100%;
+                    padding: 12px;
+                    margin: 10px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+}
+
+// Check on page load
+document.addEventListener('DOMContentLoaded', checkAdminAccess);
+
+
+// Load data from admin panel
+function loadWebsiteData() {
+    // Check if admin data exists
+    if (localStorage.getItem('websiteProducts')) {
+        const products = JSON.parse(localStorage.getItem('websiteProducts') || '[]');
+        const gallery = JSON.parse(localStorage.getItem('websiteGallery') || '[]');
+        const settings = JSON.parse(localStorage.getItem('websiteSettings') || '{}');
+        const homeContent = JSON.parse(localStorage.getItem('websiteHome') || '{}');
+        
+        // Update home page content
+        if (homeContent.heroTitle && document.getElementById('heroTitle')) {
+            document.getElementById('heroTitle').textContent = homeContent.heroTitle;
+        }
+        
+        if (homeContent.heroSubtitle && document.getElementById('heroSubtitle')) {
+            document.getElementById('heroSubtitle').textContent = homeContent.heroSubtitle;
+        }
+        
+        if (homeContent.heroImage && document.getElementById('heroImage')) {
+            document.getElementById('heroImage').style.backgroundImage = `url('${homeContent.heroImage}')`;
+        }
+        
+        // Update products on products page
+        if (products.length > 0 && window.location.pathname.includes('products')) {
+            updateProductsDisplay(products);
+        }
+        
+        // Update gallery on gallery page
+        if (gallery.length > 0 && window.location.pathname.includes('gallery')) {
+            updateGalleryDisplay(gallery);
+        }
+        
+        // Update settings in footer
+        if (settings.siteName && document.getElementById('siteName')) {
+            document.getElementById('siteName').textContent = settings.siteName;
+        }
+        
+        if (settings.phoneNumber && document.getElementById('footerPhone')) {
+            document.getElementById('footerPhone').textContent = settings.phoneNumber;
+            document.getElementById('footerPhone').href = `tel:${settings.phoneNumber}`;
+        }
+        
+        if (settings.whatsappNumber && document.getElementById('whatsappBtn')) {
+            document.getElementById('whatsappBtn').href = `https://wa.me/${settings.whatsappNumber}`;
+        }
+    }
+}
+
+// Auto-refresh when admin updates data
+window.addEventListener('storage', function(e) {
+    if (e.key === 'websiteProducts' || e.key === 'websiteGallery' || 
+        e.key === 'websiteSettings' || e.key === 'websiteHome') {
+        console.log('Website data updated from admin panel');
+        loadWebsiteData();
+        
+        // Show update notification
+        showUpdateNotification();
+    }
+});
+
+function showUpdateNotification() {
+    const notification = document.createElement('div');
+    notification.innerHTML = `
+        <div style="position: fixed; top: 20px; right: 20px; background: #10B981; color: white; 
+             padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+             z-index: 9999; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-sync-alt"></i>
+            <span>Website updated successfully!</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', loadWebsiteData);
+
+
+
+
+        
+    </script>
+</body>
+</html>

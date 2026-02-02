@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakeland Bakers - Premium Cakes & Desserts</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper JS for Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary-pink: #F8C8DC;
+            --cream-bg: #FFF5E1;
+            --accent-gold: #D4AF37;
+            --text-brown: #3E2C2A;
+            --white: #FFFFFF;
+            --dark-brown: #2A1E1C;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(212, 175, 55, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-brown);
+            background-color: var(--cream-bg);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark-brown);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-pink), #f5b0d0);
+            color: var(--text-brown);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        .logo-text span {
+            color: var(--primary-pink);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-brown);
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--dark-brown);
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-pink);
+            color: white;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .order-now-btn {
+            padding: 12px 25px;
+            background: var(--accent-gold);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .order-now-btn:hover {
+            background: var(--primary-pink);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-brown);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, rgba(255, 245, 225, 0.9) 0%, rgba(255, 245, 225, 0.7) 100%), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-gold);
+            position: relative;
+        }
+
+        .hero-text h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--primary-pink);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            transform: rotate(3deg);
+            transition: var(--transition);
+        }
+
+        .hero-img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--primary-pink);
+            color: var(--dark-brown);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ===== FEATURED PRODUCTS ===== */
+        .featured-products {
+            background: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: 10px;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: var(--primary-pink);
+            color: var(--dark-brown);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 0px;
+            color: var(--dark-brown);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .product-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        /* ===== ABOUT PREVIEW ===== */
+        .about-preview {
+            background: linear-gradient(135deg, #f9f5f0 0%, #fff9f0 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--accent-gold);
+            color: white;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-years {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .experience-text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .swiper {
+            padding: 30px 0;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-pink);
+        }
+
+        .author-info h4 {
+            color: var(--dark-brown);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ===== INSTAGRAM FEED ===== */
+        .instagram-feed {
+            background: linear-gradient(135deg, #f9f5f0 0%, #fff9f0 100%);
+        }
+
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .insta-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .insta-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .insta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .insta-item:hover .insta-overlay {
+            opacity: 1;
+        }
+
+        .insta-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .insta-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .insta-username {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #405DE6, #833AB4);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .insta-username:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(131, 58, 180, 0.2);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, #f5b0d0 100%);
+            text-align: center;
+            padding: 100px 0;
+            border-radius: 30px;
+            margin: 80px 20px;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--text-brown);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-secondary {
+            background: var(--dark-brown);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark-brown);
+            color: var(--cream-bg);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream-bg);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 140px;
+                padding-bottom: 60px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="logo-text">
+                        Cake<span>Land</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Menu -->
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="order.html" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="nav-actions">
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <a href="order.html" class="order-now-btn">Order Now</a>
+                    <div class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Where <span>Sweet Dreams</span> Come to Life</h1>
+                    <p>Premium custom cakes & desserts crafted with passion by Mums Bakery. Perfect for birthdays, weddings, and every celebration that matters.</p>
+                    <div class="hero-buttons">
+                        <a href="order.html" class="btn btn-primary">Order Your Cake</a>
+                        <a href="gallery.html" class="btn btn-secondary">View Gallery</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Cakes Delivered</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Weddings Served</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="images/cake1.jpg" alt="Beautiful Wedding Cake" class="hero-img">
+                    <div class="floating-badge">
+                        <i class="fas fa-award"></i> Best in Islamabad
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Signature Creations</h2>
+                <p>Handcrafted with premium ingredients and artistic precision</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cake2.webp" alt="Chocolate Cake">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Birthday</span>
+                        <h3 class="product-title">Chocolate Dream Cake</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span style="color: #666; margin-left: 5px;">(4.8)</span>
+                        </div>
+                        <div class="product-price">Rs. 3,500</div>
+                        <a href="order.html" class="btn btn-primary" style="padding: 10px 25px;">Add to Order</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cake3.jpg" alt="Wedding Cake">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Wedding</span>
+                        <h3 class="product-title">Elegant Wedding Cake</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(5.0)</span>
+                        </div>
+                        <div class="product-price">Rs. 12,000</div>
+                        <a href="order.html" class="btn btn-primary" style="padding: 10px 25px;">Add to Order</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cake4.webp" alt="Cupcakes">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Desserts</span>
+                        <h3 class="product-title">Assorted Cupcakes</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span style="color: #666; margin-left: 5px;">(5.0)</span>
+                        </div>
+                        <div class="product-price">Rs. 2,400</div>
+                        <a href="order.html" class="btn btn-primary" style="padding: 10px 25px;">Add to Order</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn btn-secondary">View Full Menu <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/celebration-img-1.webp" alt="Mums Bakery" class="about-img">
+                    <div class="experience-badge">
+                        <span class="experience-years">3+</span>
+                        <span class="experience-text">Years Experience</span>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Meet Mums Bakery</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px; color: #666;">
+                        From a small home kitchen to becoming Mirpur's most sought-after baker, Mums Bakery's journey is one of passion, creativity, and dedication to the art of baking.
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; color: #666;">
+                        Each cake is more than just a dessert - it's a story waiting to be told, a memory waiting to be created. Using only the finest ingredients and innovative techniques, we transform your vision into edible art.
+                    </p>
+                    <a href="about.html" class="btn btn-primary">Read Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Real stories from happy celebrations</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-text">
+                                    "Mums Bakery created the most stunning cake for our wedding! Not only was it beautiful, but it tasted incredible. All our guests were asking for the baker's details!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/celebration-img-2.jpg" alt="Customer" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Sarah & Amir</h4>
+                                        <p>Wedding Client</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-text">
+                                    "I've ordered multiple cakes from Cakeland Bakers for office parties and birthdays. Consistent quality, perfect execution, and always on time. Highly recommended!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/celebration-img-3.jpg" alt="Customer" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Rizwan Ahmed</h4>
+                                        <p>Corporate Client</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-text">
+                                    "My daughter's birthday cake was exactly as we imagined! The design, the flavors, everything was perfect. Will definitely order again for future celebrations."
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/celebration-img-3.jpg" alt="Customer" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Ayesha Khan</h4>
+                                        <p>Birthday Order</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-feed" id="instagram">
+        <div class="container">
+            <div class="section-title">
+                <h2>Follow Our Journey</h2>
+                <p>Daily creations and behind-the-scenes moments</p>
+            </div>
+            
+            <div class="insta-grid">
+                <div class="insta-item">
+                    <img src="images/her-birth.webp" alt="Cake">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram insta-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="insta-item">
+                    <img src="images/hero-anni.webp" alt="Cake">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram insta-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="insta-item">
+                    <img src="images/hero-main-img.webp" alt="Cake">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram insta-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="insta-item">
+                    <img src="images/Screenshot 2026-01-31 233105.jpg" alt="Cake">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram insta-icon"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insta-cta">
+                <a href="https://instagram.com/chef_maria842" target="_blank" class="insta-username">
+                    <i class="fab fa-instagram"></i> @chef_maria842
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Create Sweet Memories?</h2>
+                <p>Share your vision with us and let's bake something extraordinary together. Custom cakes for every occasion.</p>
+                <div class="cta-buttons">
+                    <a href="order.html" class="btn btn-primary">Order Now</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cakeland Bakers</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Premium custom cakes and desserts crafted with passion in Mirpur, Islamabad.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/chef_maria842" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="order.html">Custom Cakes</a></li>
+                        <li><a href="order.html">Wedding Cakes</a></li>
+                        <li><a href="order.html">Birthday Cakes</a></li>
+                        <li><a href="order.html">Dessert Tables</a></li>
+                        <li><a href="order.html">Cake Delivery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Cakeland Bakers, Main Boulevard<br>Mirpur, Islamabad</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>0300-1234567<br>051-1234567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>orders@cakelandbakers.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 9AM-8PM<br>Sun: 10AM-6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Cakeland Bakers by Mums Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', function() {
+            const isVisible = navMenu.style.display === 'flex';
+            navMenu.style.display = isVisible ? 'none' : 'flex';
+            
+            if (!isVisible) {
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = 'rgba(255, 255, 255, 0.98)';
+                navMenu.style.backdropFilter = 'blur(10px)';
+                navMenu.style.padding = '2rem';
+                navMenu.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                navMenu.style.gap = '20px';
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        navMenu.style.display = 'none';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add to Cart Animation
+        document.querySelectorAll('.btn-primary[href="order.html"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.textContent.includes('View')) { // Exclude View buttons
+                    e.preventDefault();
+                    
+                    // Animation
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Added!';
+                    this.style.background = 'var(--accent-gold)';
+                    this.style.color = 'white';
+                    
+                    // Update cart count
+                    const cartCount = document.querySelector('.cart-count');
+                    let count = parseInt(cartCount.textContent) || 0;
+                    count++;
+                    cartCount.textContent = count;
+                    
+                    // Animation on cart icon
+                    cartCount.style.transform = 'scale(1.5)';
+                    setTimeout(() => {
+                        cartCount.style.transform = 'scale(1)';
+                    }, 300);
+                    
+                    // Reset button after 1.5 seconds
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = '';
+                        this.style.color = '';
+                        window.location.href = 'order.html';
+                    }, 1500);
+                }
+            });
+        });
+
+        // Initialize AOS-like animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.product-card, .about-text, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        <!-- Add this before closing  tag in all pages -->
+
+        
+// Admin Access Button
+function checkAdminAccess() {
+    const isAdmin = localStorage.getItem('adminLoggedIn') === 'true';
+    
+    if (isAdmin) {
+        // Create admin button
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Panel';
+        adminBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4F46E5;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        `;
+        
+        adminBtn.onmouseover = () => {
+            adminBtn.style.background = '#4338CA';
+            adminBtn.style.transform = 'translateY(-2px)';
+        };
+        
+        adminBtn.onmouseout = () => {
+            adminBtn.style.background = '#4F46E5';
+            adminBtn.style.transform = 'translateY(0)';
+        };
+        
+        document.body.appendChild(adminBtn);
+        
+        // Add admin CSS if not present
+        if (!document.querySelector('#admin-access-css')) {
+            const style = document.createElement('style');
+            style.id = 'admin-access-css';
+            style.textContent = `
+                .admin-access-modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.7);
+                    z-index: 9999;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .admin-access-form {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    width: 90%;
+                    max-width: 400px;
+                }
+                
+                .admin-access-form input {
+                    width: 100%;
+                    padding: 12px;
+                    margin: 10px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+}
+
+// Check on page load
+document.addEventListener('DOMContentLoaded', checkAdminAccess);
+
+
+
+// Load data from admin panel
+function loadWebsiteData() {
+    // Check if admin data exists
+    if (localStorage.getItem('websiteProducts')) {
+        const products = JSON.parse(localStorage.getItem('websiteProducts') || '[]');
+        const gallery = JSON.parse(localStorage.getItem('websiteGallery') || '[]');
+        const settings = JSON.parse(localStorage.getItem('websiteSettings') || '{}');
+        const homeContent = JSON.parse(localStorage.getItem('websiteHome') || '{}');
+        
+        // Update home page content
+        if (homeContent.heroTitle && document.getElementById('heroTitle')) {
+            document.getElementById('heroTitle').textContent = homeContent.heroTitle;
+        }
+        
+        if (homeContent.heroSubtitle && document.getElementById('heroSubtitle')) {
+            document.getElementById('heroSubtitle').textContent = homeContent.heroSubtitle;
+        }
+        
+        if (homeContent.heroImage && document.getElementById('heroImage')) {
+            document.getElementById('heroImage').style.backgroundImage = `url('${homeContent.heroImage}')`;
+        }
+        
+        // Update products on products page
+        if (products.length > 0 && window.location.pathname.includes('products')) {
+            updateProductsDisplay(products);
+        }
+        
+        // Update gallery on gallery page
+        if (gallery.length > 0 && window.location.pathname.includes('gallery')) {
+            updateGalleryDisplay(gallery);
+        }
+        
+        // Update settings in footer
+        if (settings.siteName && document.getElementById('siteName')) {
+            document.getElementById('siteName').textContent = settings.siteName;
+        }
+        
+        if (settings.phoneNumber && document.getElementById('footerPhone')) {
+            document.getElementById('footerPhone').textContent = settings.phoneNumber;
+            document.getElementById('footerPhone').href = `tel:${settings.phoneNumber}`;
+        }
+        
+        if (settings.whatsappNumber && document.getElementById('whatsappBtn')) {
+            document.getElementById('whatsappBtn').href = `https://wa.me/${settings.whatsappNumber}`;
+        }
+    }
+}
+
+// Auto-refresh when admin updates data
+window.addEventListener('storage', function(e) {
+    if (e.key === 'websiteProducts' || e.key === 'websiteGallery' || 
+        e.key === 'websiteSettings' || e.key === 'websiteHome') {
+        console.log('Website data updated from admin panel');
+        loadWebsiteData();
+        
+        // Show update notification
+        showUpdateNotification();
+    }
+});
+
+function showUpdateNotification() {
+    const notification = document.createElement('div');
+    notification.innerHTML = `
+        <div style="position: fixed; top: 20px; right: 20px; background: #10B981; color: white; 
+             padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+             z-index: 9999; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-sync-alt"></i>
+            <span>Website updated successfully!</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', loadWebsiteData);
+
+
+
+
+    </script>
+</body>
+</html>
